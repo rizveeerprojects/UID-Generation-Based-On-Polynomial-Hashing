@@ -1,5 +1,8 @@
 #import modules 
 import csv 
+import threading
+import functools 
+
 
 
 #polynomial hashing function 
@@ -100,11 +103,8 @@ try:
 	count = 0
 	for row in csvReader:
 		count = count + 1 
-		if(count==1):
-			for i in STRING_COL_NAME:
-				hashDictionary[i]={}
-			for i in INT_COL_NAME:
-				hashDictionary[i]={} 
+		if(count==-1): #not necessary module 
+			continue
 		else:
 			objModified={} #hashed object 
 			obj={} #real object 
@@ -121,28 +121,26 @@ try:
 						print(e)
 
 				objModified[i]=hashValue
-				if(hashValue in hashDictionary[i]):
-					hashDictionary[i][hashValue].append(len(trainingDatabase)) #appending in the list of the key in dictionary 
+				key = i+','+hashValue
+				if(key in hashDictionary):
+					hashDictionary[key].append(len(trainingDatabase))
 				else:
-					newHash={}
-					newHash[hashValue]=[]
-					newHash[hashValue].append(len(trainingDatabase))
-					hashDictionary[i]=newHash #creating new key with a list 
+					hashDictionary[key]=[]
+					hashDictionary[key].append(len(trainingDatabase))
 
 			for i in INT_COL_NAME:
-				obj[i]=row[i]
-				objModified[i]=row[i]
-
-				if(obj[i] in hashDictionary[i]):
-					hashDictionary[i][obj[i]].append(len(trainingDatabase)) #appending in the list of the key in dictionary
+				obj[i]=int(row[i])
+				objModified[i]=int(row[i])
+				key=i+','+str(obj[i])
+				if(key in hashDictionary):
+					hashDictionary[key].append(len(trainingDatabase))
 				else:
-					newHash={} 
-					newHash[obj[i]]=[]
-					newHash[obj[i]].append(len(trainingDatabase))
-					hashDictionary[i]=newHash #creating new key with a list
+					hashDictionary[key]=[]
+					hashDictionary[key].append(len(trainingDatabase))
 
 			trainingDatabaseModified.append(objModified)
 			trainingDatabase.append(obj) 
+
 except Exception as e:
 	print(e)
 print("Training Completed")
@@ -162,7 +160,7 @@ try:
 	count = 0
 	for row in csvReader:
 		count = count + 1 
-		if(count==1):
+		if(count == -1): #not necessary module 
 			continue
 		else:
 			objModified={} #hashed object 
@@ -182,8 +180,8 @@ try:
 				objModified[i]=hashValue
 
 			for i in INT_COL_NAME:
-				obj[i]=row[i]
-				objModified[i]=row[i]
+				obj[i]=int(row[i])
+				objModified[i]=int(row[i])
 
 			testingDatabaseModified.append(objModified)
 			testingDatabase.append(obj) 
@@ -193,6 +191,203 @@ except Exception as e:
 print("Total testing instances = ",len(testingDatabaseModified))
 
 
+
+### Thead Module #######
+weightAttributes={}
+print("Setting weights for string attributes:")
+for j in STRING_COL_NAME:
+	v= float(input("Weight For attribute "+j+": "))
+	weightAttributes[j]=v 
+
+print("Setting weights for integer attributes:")
+for j in INT_COL_NAME:
+	v= float(input("Weight For attribute "+j+": "))
+	weightAttributes[j]=v 
+
+print("Provide Conflicting Measure Threshold: ")
+threshold=float(input("Provide CM Threshold: "))
+
+print("Provide MIN_ATTRIBUTE_CONFLICT: ")
+MIN_ATTRIBUTE_CONFLICT = int(input(("Minimum number of conflicted attribute to denote a tuple conflicted: ")))
+
+print("Provide +/- Integer Deviation Range For Each Integer Attribute")
+INT_COL_DEVIATION={}
+for j in INT_COL_NAME:
+	v=int(input("Deviation Range For "+j+" : "))
+	INT_COL_DEVIATION[j]=v 
+
+
+
+class ThreadObject(threading.Thread):
+	def __init__ (self,st,en,name):
+		threading.Thread.__init__(self)
+		self.st = st
+		self.en  = en 
+		self.name = name 
+		self.suggestionList={}
+	def run(self):
+		global trainingDatabaseModified,testingDatabaseModified
+		global trainingDatabase,testingDatabase 
+
+		global STRING_COL_NAME, INT_COL_NAME
+		global hashDictionary 
+
+		global weightAttributes,threshold,MIN_ATTRIBUTE_CONFLICT
+
+		for i in range(self.st,self.en+1):
+			testInstance = testingDatabaseModified[i] 
+
+			#flag initialization 
+			flagList = {}
+			conflictedIdx={}
+			for j in STRING_COL_NAME:
+				flagList[j]=0
+				conflictedIdx[j]=[]
+			for j in INT_COL_NAME:
+				flagList[j]=0
+				conflictedIdx[j]=[]
+
+			#flag setting for string attributes
+			cm=0 
+			for j in STRING_COL_NAME:
+				try:
+					key=j+','+testInstance[j]
+					if(key in hashDictionary):
+						flagList[j]=1
+						cm=cm+weightAttributes[j]
+						conflictedIdx[j]=hashDictionary[key]
+					else:
+						flagList[j]=0
+				except Exception as e:
+					print(e)
+			#flag setting for int attributes 
+			for j in INT_COL_NAME:
+				lowRange = max(0,testInstance[j]-INT_COL_DEVIATION[j])
+				highRange = testInstance[j]+INT_COL_DEVIATION[j]
+				for k in range(lowRange,highRange+1):
+					try:
+						key=j+','+str(k)
+						if(key in hashDictionary):
+							conflictedIdx[j].extend(hashDictionary[key])
+							if(flagList[j] == 0):
+								flagList[j]=1
+								cm=cm+weightAttributes[j]
+
+					except Exception as e:
+						print(e)
+
+			resultConflictedUIDList=[]
+			print("conflict measure = ",cm)
+			if(cm>=threshold):
+				#conflict exists 
+				#list union 
+				finalConflictedList=[]
+				for j in STRING_COL_NAME:
+					if(len(conflictedIdx[j])>0):
+						finalConflictedList = list(set(finalConflictedList) | set(conflictedIdx[j])) 
+				for j in INT_COL_NAME:
+					if(len(conflictedIdx[j])>0):
+						finalConflictedList = list(set(finalConflictedList) | set(conflictedIdx[j])) 
+
+				#calculating the actual conflicted UIDs 
+				for j in finalConflictedList:
+					idx=j
+					countConflictedAttr=0 #how many attributes got conflicted in this tuple
+					conflictPenalty=0 #amount of conflict penalty based on weight 
+					obj=trainingDatabaseModified[idx]
+					for k in STRING_COL_NAME:
+						if(obj[k] == testInstance[k]):
+							conflictPenalty=conflictPenalty+weightAttributes[k]
+							countConflictedAttr=countConflictedAttr+1
+					for k in INT_COL_NAME:
+						diff=abs(obj[k]-testInstance[k])
+						if(diff<=INT_COL_DEVIATION[k]):
+							conflictPenalty=conflictPenalty+weightAttributes[k]
+							countConflictedAttr=countConflictedAttr+1
+					if(countConflictedAttr>=MIN_ATTRIBUTE_CONFLICT and conflictPenalty >= threshold):
+						# A final conflicted tuple 
+						objSave = trainingDatabase[idx]
+						objSave['conflictedAttributeWeight']=conflictPenalty
+						resultConflictedUIDList.append(objSave)
+			else:
+				resultConflictedUIDList=[]
+			print(str(i) + " Completed")
+			self.suggestionList[i]=resultConflictedUIDList  
+
+
+NUMBER_OF_THREADS=10 #NUMBER OF THREADS 
+threadList=[]
+division = int(len(testingDatabaseModified)/NUMBER_OF_THREADS)
+start=0
+cnt=0
+while(start<len(testingDatabaseModified)):
+	cnt=cnt+1
+	en=min(start+division,len(testingDatabaseModified)-1)
+	v = ThreadObject(start,en,cnt)
+	threadList.append(v)
+	start=start+division+1
+
+print("Threads starting")
+for i in range(0,len(threadList)):
+	threadList[i].start()
+
+for i in range(0,len(threadList)):
+	threadList[i].join()
+print("Threads Completed")
+
+
+print("Printing Section")
+finalResultList={}
+for i in threadList:
+	for j in i.suggestionList:
+		print(j)
+		finalResultList[j]=i.suggestionList[j]
+		#print(finalResultList[j])
+
+def customComparator(var1,var2):
+	return  var1['conflictedAttributeWeight']>var2['conflictedAttributeWeight']
+
+cmp = functools.cmp_to_key(customComparator)
+
+print("Output Will be written to ResultFile.txt")
+f=open("ResultFile.txt","w")
+for j in finalResultList:
+	print(j)
+	row = testingDatabase[j] 
+	line=""
+	for k in STRING_COL_NAME:
+		if(line==""):
+			line=row[k]
+		else:
+			line=line+','+row[k] 
+	for k in INT_COL_NAME:
+		if(line == ""):
+			line=str(row[k])
+		else:
+			line=line+','+str(row[k])
+	f.write(line+'\n')
+
+	line='SuggestionCount:'+str(min(10,len(finalResultList[j])))
+	f.write(line+'\n')
+	if(len(finalResultList[j])>0):
+		finalResultList[j].sort(key=cmp)
+		for k in finalResultList[j]:
+			line=""
+			for key in STRING_COL_NAME:
+				if(line == ""):
+					line = k[key]
+				else:
+					line=line+","+k[key]
+			for key in INT_COL_NAME:
+				if(line==""):
+					line=str(k[key])
+				else:
+					line=line+','+str(k[key])
+			f.write('SuggestionList:'+line+'\n')
+	else:
+		pass 
+
+f.close()
 
 
 
