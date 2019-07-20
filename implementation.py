@@ -90,6 +90,8 @@ print(INT_COL_NAME)
 
 trainingDatabaseModified = []  #aka hashed for string attributes, int attributes directly saved 
 trainingDatabase = [] #input training object directly saved 
+
+hashDictionary={}
 try:
 	csvFile = open(trainingFilePath,"r")
 	csvReader = csv.DictReader(csvFile)
@@ -99,7 +101,10 @@ try:
 	for row in csvReader:
 		count = count + 1 
 		if(count==1):
-			continue
+			for i in STRING_COL_NAME:
+				hashDictionary[i]={}
+			for i in INT_COL_NAME:
+				hashDictionary[i]={} 
 		else:
 			objModified={} #hashed object 
 			obj={} #real object 
@@ -114,7 +119,15 @@ try:
 							hashValue=hashValue+','+v 
 					except Exception as e:
 						print(e)
+
 				objModified[i]=hashValue
+				if(hashValue in hashDictionary[i]):
+					hashDictionary[i][hashValue].append(len(trainingDatabase)) #appending in the list of the key in dictionary 
+				else:
+					newHash={}
+					newHash[hashValue]=[]
+					newHash[hashValue].append(len(trainingDatabase))
+					hashDictionary[i]=newHash #creating new key with a list 
 
 			for i in INT_COL_NAME:
 				obj[i]=row[i]
