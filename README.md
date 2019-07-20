@@ -2,6 +2,6 @@
 This project is a UID Generation System based on polynomial hashing.
 
 <div>
-<span style="font-weight:bold">Prerequisite</span></br>
+<bold>Prerequisite</bold></br>
 <ul>Python 3.x </ul>
 </div>
