@@ -133,12 +133,68 @@ try:
 				obj[i]=row[i]
 				objModified[i]=row[i]
 
+				if(obj[i] in hashDictionary[i]):
+					hashDictionary[i][obj[i]].append(len(trainingDatabase)) #appending in the list of the key in dictionary
+				else:
+					newHash={} 
+					newHash[obj[i]]=[]
+					newHash[obj[i]].append(len(trainingDatabase))
+					hashDictionary[i]=newHash #creating new key with a list
+
 			trainingDatabaseModified.append(objModified)
 			trainingDatabase.append(obj) 
 except Exception as e:
 	print(e)
 print("Training Completed")
 print("Total training instances = ",len(trainingDatabaseModified))
+
+
+#testing intialization section 
+
+testingDatabaseModified = []  #aka hashed for string attributes, int attributes directly saved 
+testingDatabase = [] #input training object directly saved 
+
+try:
+	csvFile = open(testingFilePath,"r")
+	csvReader = csv.DictReader(csvFile)
+	print("WARNING: CSV FILE's first line should be column names. For ex - name, father_name, mother_name etc.")
+	print("Testing Starting") 
+	count = 0
+	for row in csvReader:
+		count = count + 1 
+		if(count==1):
+			continue
+		else:
+			objModified={} #hashed object 
+			obj={} #real object 
+			for i in STRING_COL_NAME:
+				obj[i]=row[i] 
+				for j in range(0,len(modNumberList)):
+					try:
+						v = str(PolynomialHashing(obj[i],modNumberList[j]))
+						if(j==0):
+							hashValue=v 
+						else:
+							hashValue=hashValue+','+v 
+					except Exception as e:
+						print(e)
+
+				objModified[i]=hashValue
+
+			for i in INT_COL_NAME:
+				obj[i]=row[i]
+				objModified[i]=row[i]
+
+			testingDatabaseModified.append(objModified)
+			testingDatabase.append(obj) 
+except Exception as e:
+	print(e)
+
+print("Total testing instances = ",len(testingDatabaseModified))
+
+
+
+
 
 
 
