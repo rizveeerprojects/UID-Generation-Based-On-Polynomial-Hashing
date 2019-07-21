@@ -50,6 +50,13 @@ Create a directory. Clone this repository there or download as zip and then unzi
 7. Then we will take input of conflict measure ratio (CM) and min_attribute_conflict. CM denotes the minimum threshold to denote there exists conflict for a testing instance and min_attribute_conflict denotes the minimum number of attributes to be conflicted to report a tuple as conflicted tuple for the current training instance. 
 ![cm](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/cm_min_attr.png)
 
+8. Then our code will start to calculate conflict amount of each testing instacne from testing csv file. This code is implemented as multithreaded aka parallel program. We have defined there will be at most 10 threads. But users can change this variable by updating the following parameter in the code. Performace in run time will improve morea and more if we use multicore computer.
+
+![threads](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/thread.png)
+
+9. The Result of the code will be saved into **ResultFile.txt** with each testing instance along with possible conflicted training instances. 
+![result](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/result.png)
+
 
 
 ## Built With
