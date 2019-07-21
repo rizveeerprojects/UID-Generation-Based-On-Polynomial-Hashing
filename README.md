@@ -33,7 +33,16 @@ Create a directory. Clone this repository there or download as zip and then unzi
 
 3. First we will take input of how many numbers we will use to mod string mapped integers and then take the numbers which will be used to mod.
 
-![mod input]https://raw.githubusercontent.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/master/Images/mod_input.png
+![mod input](https://raw.githubusercontent.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/master/Images/mod_input.png)
+
+4. Then we will take the training and testing file's path. It is advised to keep the files in the same directory and provide just file name. Don't give extra any trailing or starting spaces in any input.
+
+![file_name](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/file_name.png)
+
+5. Then give how many columns are in the file and how many of them are string and will be hased. After that provide the column names. First those which will be hased and following that those which will not be hashed. 
+
+![col num hash col](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/col_num_hash_col.png)
+![col description](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/col_description.png)
 
 ## Built With
 
