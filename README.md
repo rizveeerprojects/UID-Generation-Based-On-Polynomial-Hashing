@@ -25,7 +25,7 @@ Create a directory. Clone this repository there or download as zip and then unzi
 
 ## How To Run The Code
 
-1. You will need two csv formatted (',' separated) files respectively for Training and Testing Database.
+1. You will need two csv formatted (',' separated) files respectively for Training and Testing Database. Both of them must be in proper csv formatted have specific column names. 
 
 
 ## Built With
