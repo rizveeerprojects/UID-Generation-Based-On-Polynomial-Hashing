@@ -39,10 +39,17 @@ Create a directory. Clone this repository there or download as zip and then unzi
 
 ![file_name](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/file_name.png)
 
-5. Then give how many columns are in the file and how many of them are string and will be hased. After that provide the column names. First those which will be hased and following that those which will not be hashed. 
+5. Then give how many columns are in the file and how many of them are string and will be hased. After that provide the column names. First those which will be hased and following that those which will not be hashed. We are saying that all of the columns of csv files will be used to perform hashing, either their type will be string(which will be hashed) or integer(which will not be hashed) 
 
 ![col num hash col](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/col_num_hash_col.png)
 ![col description](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/col_description.png)
+
+6. Then we will provide weights to the attributes. First those columns which have string data types and after that those column which will have integer data type.
+![weight](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/weight_provide.png)
+
+7. Then we will take input of conflict measure ratio (CM) and min_attribute_conflict. CM denotes the minimum threshold to denote there exists conflict for a testing instance and min_attribute_conflict denotes the minimum number of attributes to be conflicted to report a tuple as conflicted tuple for the current instance. 
+
+
 
 ## Built With
 
