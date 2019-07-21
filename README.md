@@ -30,7 +30,7 @@ Create a directory. Clone this repository there or download as zip and then unzi
 ![file_format]
 (https://raw.githubusercontent.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/master/Images/file_format.png)
 
-
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
 
 ## Built With
 
