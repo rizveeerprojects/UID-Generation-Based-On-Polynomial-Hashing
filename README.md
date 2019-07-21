@@ -29,7 +29,7 @@ Create a directory. Clone this repository there or download as zip and then unzi
 
 ![file format](https://raw.githubusercontent.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/master/Images/file_format.png)
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+2. Our projects main code is [implementation.py](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/implementation.py). Run this code through terminal or any python supported IDE.
 
 ## Built With
 
