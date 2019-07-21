@@ -27,8 +27,7 @@ Create a directory. Clone this repository there or download as zip and then unzi
 
 1. You will need two csv formatted (',' separated) files respectively for Training and Testing Database. Both of them must be in proper csv formatted have specific column names. Please see the example image:
 
-![file_format]
-(https://raw.githubusercontent.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/master/Images/file_format.png)
+![file format](https://raw.githubusercontent.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/master/Images/file_format.png)
 
 ![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
 
