@@ -23,35 +23,16 @@ Install Python 3.x
 Create a directory. Clone this repository there or download as zip and then unzip it in the directory.
 ```
 
-## Running the tests
+## How To Run The Code
 
-Explain how to run the automated tests for this system
+1. You will need two csv formatted (',' separated) files respectively for Training and Testing Database.
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
 * [Python 3.x] (https://docs.python.org/3/) 
 * Linux 16.04 Operating System
-* [Google Spreadsheet] (https://www.google.com/sheets/about/)
+* [Google Spreadsheet CSV Formatted File] (https://www.google.com/sheets/about/)
 
 
 ## Authors
