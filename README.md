@@ -8,26 +8,19 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+What things you need to install the software and how to install them.
 
 ```
-Give examples
+Python 3.x
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
 ```
-Give the example
+Install Python 3.x 
 ```
-
-And repeat
-
 ```
-until finished
+Create a directory. Clone this repository there or download as zip and then unzip it in the directory.
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
