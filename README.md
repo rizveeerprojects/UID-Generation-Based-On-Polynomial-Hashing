@@ -33,7 +33,7 @@ Create a directory. Clone this repository there or download as zip and then unzi
 
 3. First we will take input of how many numbers we will use to mod string mapped integers and then take the numbers which will be used to mod.
 
-![mod input]https://raw.githubusercontent.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/mod_input.png
+![mod input]https://raw.githubusercontent.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/master/Images/mod_input.png
 
 ## Built With
 
