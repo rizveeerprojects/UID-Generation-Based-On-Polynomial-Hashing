@@ -47,7 +47,8 @@ Create a directory. Clone this repository there or download as zip and then unzi
 6. Then we will provide weights to the attributes. First those columns which have string data types and after that those column which will have integer data type.
 ![weight](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/weight_provide.png)
 
-7. Then we will take input of conflict measure ratio (CM) and min_attribute_conflict. CM denotes the minimum threshold to denote there exists conflict for a testing instance and min_attribute_conflict denotes the minimum number of attributes to be conflicted to report a tuple as conflicted tuple for the current instance. 
+7. Then we will take input of conflict measure ratio (CM) and min_attribute_conflict. CM denotes the minimum threshold to denote there exists conflict for a testing instance and min_attribute_conflict denotes the minimum number of attributes to be conflicted to report a tuple as conflicted tuple for the current training instance. 
+![cm](https://github.com/rizveeerprojects/UID-Generation-Based-On-Polynomial-Hashing/blob/master/Images/cm_min_attr.png)
 
 
 
