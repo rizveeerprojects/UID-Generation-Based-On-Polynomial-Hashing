@@ -71,7 +71,7 @@ Create a directory. Clone this repository there or download as zip and then unzi
 
 ## Authors
 * **Amin Ahsan Ali**
-* **Mainul Islam Zaber**
+* **Moinul Islam Zaber**
 * **Redwan Ahmed Rizvee** 
 * **Nahian Ashraf**
 * **Riddho Ridwanul Haque**
