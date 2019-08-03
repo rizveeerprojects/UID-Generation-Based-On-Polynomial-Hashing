@@ -4,6 +4,9 @@ from pyphonetics import FuzzySoundex
 from pyphonetics import Lein
 from pyphonetics import RefinedSoundex
 
+#https://stackabuse.com/phonetic-similarity-of-words-a-vectorized-approach-in-python/
+#https://pypi.org/project/pyphonetics/
+
 class PhoneticModule:
 	def __init__(self):
 		self.soundex=Soundex()
@@ -30,3 +33,11 @@ class PhoneticModule:
 		res=res + self.refinedSoundex.distance(word1, word2, metric='levenshtein') * self.phoneticSimilarityWeight['refinedSoundex'] * 1.0
 		print(res)
 
+	def PhoneticLayerCreation(self,word):
+		string=""
+		string = self.soundex.phonetics(word)
+		string = string + '_' + self.metaphone.phonetics(word)
+		string = string + '_' + self.fuzzySoundex.phonetics(word)
+		string = string + '_' + self.lein.phonetics(word)
+		string = string + '_' + self.refinedSoundex.phonetics(word)
+		return string 
