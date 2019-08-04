@@ -12,8 +12,8 @@ class AvroPhoneticConversion:
 		with open('AvroConversion - Sheet1.csv') as csvFile:
 			csvReader = csv.DictReader(csvFile)
 			for row in csvReader:
-				self.banglaToEnglishMap[row['Bangla Character'].strip()]=row['English Phonetic Conversion'].lower().strip()
-				self.englishToBanglaMap[row['English Phonetic Conversion'].lower().strip()]=row['Bangla Character'].strip()
+				self.banglaToEnglishMap[row['Bangla Character'].strip()]=row['English Phonetic Conversion'].strip()
+				self.englishToBanglaMap[row['English Phonetic Conversion'].strip()]=row['Bangla Character'].strip()
 				self.maxLength=max(self.maxLength,len(row['Bangla Character'].strip()))
 
 	def Conditions(self,ch1,ch2,ch3):
@@ -46,9 +46,9 @@ class AvroPhoneticConversion:
 
 	def JointAlphabetOrRef(self,ch1,ch2,ch3):
 		if(ord(ch1) == 2480 and ord(ch2) == 2509):
-			return "rr"+self.banglaToEnglishMap[ch3] #ref 
+			return ("rr"+self.banglaToEnglishMap[ch3]),[self.banglaToEnglishMap[ch3],"rr"] #ref 
 		#joint alphabet
-		return self.banglaToEnglishMap[ch1]+self.banglaToEnglishMap[ch3]
+		return (self.banglaToEnglishMap[ch1]+self.banglaToEnglishMap[ch3]),[self.banglaToEnglishMap[ch3],self.banglaToEnglishMap[ch1]]
 
 	def Conversion(self,word):
 		"""
@@ -60,6 +60,7 @@ class AvroPhoneticConversion:
 		"""
 
 		charList=[] #conversion to a list from a string of word 
+		phoneticallyConvertedList=[]
 		print(word)
 		for i in word:
 			charList.append(i)
@@ -80,25 +81,36 @@ class AvroPhoneticConversion:
 			if(verdict==1):
 				string=self.FolaDetection(ch1,ch2,ch3)
 				result=string+result
-				i=i-2
+				phoneticallyConvertedList.append(string)
+				i=i-1
 			elif(verdict==2):
-				string=self.JointAlphabetOrRef(ch1,ch2,ch3)
+				string,_list=self.JointAlphabetOrRef(ch1,ch2,ch3)
 				result=string+result
+				for j in _list:
+					phoneticallyConvertedList.append(j)
 				i=i-3
 			elif(verdict==3):
 				ch3=self.banglaToEnglishMap[ch3]
 				result=ch3+result
+				phoneticallyConvertedList.append(ch3)
 				i=i-1
 			elif(verdict==4): 
 				ch3=self.banglaToEnglishMap[ch3]
 				result=ch3+result
+				phoneticallyConvertedList.append(ch3)
 				if(len(ch2) == 0):
 					print("result = ",result)
 					break
 				else:
 					ch2=self.banglaToEnglishMap[ch2]
 					result=ch2+result
+					phoneticallyConvertedList.append(ch2)
 				i=i-2		
 		print(result)
+		phoneticallyConvertedList.reverse()
+		print(phoneticallyConvertedList)
 		return result
-    
+
+
+obj=AvroPhoneticConversion()
+obj.Conversion('সরীপত')

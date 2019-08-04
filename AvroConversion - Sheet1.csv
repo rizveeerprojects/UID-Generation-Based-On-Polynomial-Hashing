@@ -1,214 +1,62 @@
-Bangla Character,English Phonetic Conversion,
-অ,o,
-ঋ,rri,
-আ,a,
-এ,e,
-ই,i,
-ঐ,oi,OI
-ঈ,ee,I
-ও,o ,
-উ,oo,
-ঔ,ou,OU
-ঊ,u,
-া,a,
-ৃ,rri,
-ি,i,
-ে,e,
- ী,ee,
-ৈ,oi,
-ু,oo,
-ো,o,
-ু,u,
-ৌ,ou,
-ব,b
-র,r 
-দ,D
- ক্স,ks 
-ঙ্ক্ষ,Ngkkh,Ngkx 
-ঙ্খ,Ngkh 
-খয্ ,khy,khZ 
-ঙ্গ,Ngg 
-খৰ্,khr 
-ঙ্গয্,Nggy,NggZ 
-ঙ্ঘ,Nggh 
-গণ,gN 
-ঙ্ঘয্,Ngghy,NgghZ 
-গ্ধ,gdh 
-ঙ্ঘৰ্,Ngghr 
-ঙ্ম,Ngm 
-টব্,Tw 
-ট্ম,Tm 
-চ্চ,cc 
-টয্,Ty,TZ 
-চ্ছ,cch 
-টৰ্,Tr 
-চ্ছব্,cchw 
-চ্ছৰ্,cchr 
-ড্ড,DD 
-চ্ঞ,cNG 
-ডয্,Dy,DZ 
-চয্,cy,cZ 
-ডৰ্,Dr 
-জ্জ,jj 
-ঢয্,Dhy,DhZ 
-জ্জব্,jjw 
-ঢৰ্,Dhr 
-জ্ঝ,jjh 
-জ্ঞ,gg,jNG 
-ণ্ট,NT
-জব্,jw  
-ণ্ঠ,NTh 
-জয্ ,jy,jZ  
-ণ্ড,ND 
-জৰ্,jr  
-ণ্ডয্,NDy,NDZ 
-ণ্ডৰ্,NDr 
-ঞ্চ,nc,  NGc  
-ণ্ঢ,NDh 
-ঞ্ছ,nch,NGch  
-ণ্ণ,Nn 
-ঞ্জ,nj,NGj  
-ণব্,Nw 
-ঞ্ঝ,njh,NGjh  
-ণ্ম,Nm 
-ণয্,Ny,NZ 
-ট্ট,TT  
-ত্ত,tt  
-ধ্ন,dhn 
-ত্তব্,ttw  
-ধব্,dhw 
-ত্থ,tth 
- ধ্ম,dhm 
-ত্ন,tn  
-ধয্,dhy,dhZ 
-তব্,tw  
-ধৰ্,dhr
- ত্ম,tm 
- ত্ময্,tmy,tmZ 
- ন্ট,nT 
-তয্,ty,tZ 
- ন্ঠ,nTh 
-তৰ্,tr 
- ন্ড,nD 
-থব্,thw  
-ন্ত,nt 
-থয্,thy,thZ  
-ন্তব্,ntw 
-থ্ৰ,thr  
-ন্তয্,nty,ntZ 
-ন্তৰ্,ntr 
-দ্গ,dg  
-ন্থ,nth 
-দ্ঘ,dgh 
- ন্দ,nd 
-দ্দ,dd 
- ন্দয্,ndy,ndZ 
-দ্দব্,ddw 
- ন্দব্,ndw 
-দ্ধ,ddh 
- ন্দৰ্,ndr 
-দব্,dw  
-ন্ধ,ndh 
-দ্ভ,dv,dbh  
-ন্ধয্,ndhy,ndhZ 
-দ্ম,dm  
-ন্ধৰ্,ndhr 
-দয্ ,dy,dZ  
-ন্ন,nn 
-দৰ্,dr  
-নব্,nw
- ন্ম ,nm  
-ভয্,vy,vZ,bhy,bhZ 
-নয্ ,ny,nZ  
-ভৰ্,vr,bhr
- ন্স,ns  
-ভ্ল,vl, bhl 
-মথ,mth
-প্ট  ,pT  
-ম্ন,mn 
-প্ত  ,pt  
-ম্প,mp 
-প্ন  ,pn  
-ম্পৰ্,mpr 
-প্প  ,pp  
-ম্ফ,mf,mph 
-পয্  ,py,pZ  
-মব্,mb,mw 
-পৰ্  ,pr  
-ম্ভ,mv,mbh 
-প্ল  ,pl  
-ম্ভৰ্,mvr,mbhr 
-প্স  ,ps  
-ম্ম,mm 
-ময্,my,mZ 
-ফৰ্  ,fr,phr  
-মৰ্,mr 
-ফ্ল  ,fl,phl  
-ম্ল,ml  
-যয্,zy,zZ
-বব্ ,bb 
-বয্  ,by,bZ  
-বৰ্  ,br  
-ল্ক,lk 
-ব্ল  ,bl 
- ল্গ,lg
- ল্ট  ,lT  
-ষ্টয্,ShTy,ShTZ
- ল্ড  ,lD  
-ষ্টৰ্,ShTr 
-লধ  ,ldh  
-ষ্ঠ,ShTh
- ল্প  ,lp  
-ষ্ঠয্,ShThy,ShThZ 
-লব্ ,lb,lw  
-ষ্ণ,ShN 
-লভ , lv,lbh  
-ষ্প,Shp
- ল্ম,  lm  
-ষ্পৰ্,Shpr 
-লয্  ,ly,lZ  
-ষ্ফ,Shph,Shf 
-ল্ল  ,ll  
-ষব্,Shw 
-ষ্ম,Shm 
-শ্চ  ,shc,Sc  
-শ্ছ  ,shch,Sch  
-স্ক,sk 
-শ্ত  ,sht,St  
-স্কৰ্,skr 
-শ্ন  ,shn,Sn  
-স্ট,sT 
-শব্  ,shw,Sw  
-স্টৰ্,sTr 
-শ্ম  ,shm,Sm  
-স্খ,skh 
-শয্  ,shy,shZ,Sy,SZ  
-স্ত,st 
-শৰ্,shr,Sr  
-স্তব্,stw 
-শ্ল  ,shl,Sl  
-স্তয্,sty,stZ 
-স্থ,sth 
-ষ্ক  ,Shk  
-স্থয্,sthy,sthZ 
-ষ্কৰ্  ,Shkr  
-স্ন,sn 
-ষ্ট  ,ShT  
-স্প,sp 
-স্ফ  ,sf,sph  
-সব্  ,sw 
- স্ম  ,sm  
-সয্  ,sy,sZ  
-সৰ্  ,sr  
-স্ল  ,sl  
-সক্ল  ,skl  
-হ্ণ  ,hN  
-হ্ন  ,hn  
-হব্  ,hw  
-হ্ম  ,hm  
-হয্  ,hy,hZ  
-হৰ্  ,hr  
-হ্ল ,hl  
-হৃ,  hrri
-ব্ব,bb
-অর্ক, akro
+Bangla Character,English Phonetic Conversion,Avro Conversion,,
+অ,o,o,,
+ঋ,rri,rri,,
+আ,a,a,,
+এ,e,e,,
+ই,i,i,,
+ঐ,oi,OI,OI,
+ঈ,i,ee,I,
+ও,o,o,,
+উ,u,oo,u,
+ঔ,ou,OU,OU,
+ঊ,u,U,,
+া,a,a,,
+ৃ,rri,rri,,
+ি,i,i,,
+ে,e,e,,
+ী,i,ee,I,
+ৈ,oi,OI,,
+ু,u,oo,u,
+ো,ou,o,,
+ু,u,U,,
+ৌ,ou,OU,,
+ক,k,k,,
+খ,kh,kh,,
+গ,g,g,,
+ঘ,gh,gh,,    
+ঙ,ng,Ng,,
+চ,c,c,,
+ছ,ch,ch,,
+জ,j,j,,
+ঝ,jh,jh,,
+ঞ,ng,NG,,
+ট,t,T,,
+ঠ,th,Th,,
+ড,d,D,,
+ঢ,dh,Dh,,
+ণ,n,N,,
+ত,t,t,,
+থ,th,th,,
+দ,d,d,,
+ধ,dh,dh,,
+ন,n,n,,
+প,p,p,,
+ফ,ph,ph,f,
+ব,b,b,,
+ভ,bh,bh,v,
+ম,m,m,,
+য,z,z,,
+র,r,r,,
+ল,l,l,,
+শ,s,sh,S,
+ষ,s,Sh,,
+স,s,s,,
+হ,h,h,,
+ড়,r,R,,
+ঢ়,r,Rh,,
+য়,y,y,Y,
+ত্,t,t``,,
+ং,ng,ng,,
+ঃ,:,:,,
+◌ঁ,^,^,,
+জ়,j,J,,
